@@ -10,7 +10,7 @@ class opendistro::repo {
         $download_url = 'https://d3g5vo6xdbdb9a.cloudfront.net/yum/noarch/'
 
         if !defined(Yumrepo['opendistroforelasticsearch-artifacts-repo']) {
-          yumrepo{'':
+          yumrepo{'opendistroforelasticsearch-artifacts-repo':
             ensure   => $opendistro::ensure,
             descr    => 'Release RPM artifacts of OpenDistroForElasticsearch',
             baseurl  => $download_url,

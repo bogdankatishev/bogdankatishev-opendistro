@@ -3,6 +3,7 @@
 class opendistro (
   String                         $java_package,
   String                         $package_name,
+  String                         $package_ensure                                      = 'installed',
   Enum['present', 'absent'] $ensure                                                   = 'present',
   Boolean $manage_repo                                                                = true,
   Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure                 = 'enabled',
