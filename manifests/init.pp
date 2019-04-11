@@ -2,12 +2,16 @@
 
 class opendistro (
   Enum['present', 'absent'] $ensure                                                   = 'present',
+  Optional[Enum['systemd', 'init', 'debian', 'redhat', 'upstart']] $service_provider  = undef,
+  Boolean $manage_repo                                                                = true,
+  Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure                 = 'enabled',
+  String                         $java_package,
+  String                         $package_name,
 ) {
 
   include opendistro::repo
   include opendistro::install
   include opendistro::config
-  include opendistro::service
 
   if $manage_repo {
     Class['opendistro::repo']
@@ -18,10 +22,8 @@ class opendistro (
     'present': {
       Class['opendistro::install']
       ->Class['opendistro::config']
-      ~>Class['opendistro::service']
     }
     default: {
-      Class['opendistro::service']
       ->Class['opendistro::config']
       ->Class['opendistro::install']
     }
