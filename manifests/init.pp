@@ -1,12 +1,11 @@
 # Installs and configures Open Distro for ElasticSearch
 
 class opendistro (
-  Enum['present', 'absent'] $ensure                                                   = 'present',
-  Optional[Enum['systemd', 'init', 'debian', 'redhat', 'upstart']] $service_provider  = undef,
-  Boolean $manage_repo                                                                = true,
-  Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure                 = 'enabled',
   String                         $java_package,
   String                         $package_name,
+  Enum['present', 'absent'] $ensure                                                   = 'present',
+  Boolean $manage_repo                                                                = true,
+  Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure                 = 'enabled',
 ) {
 
   include opendistro::repo
@@ -24,7 +23,7 @@ class opendistro (
       ->Class['opendistro::config']
     }
     default: {
-      ->Class['opendistro::config']
+      Class['opendistro::config']
       ->Class['opendistro::install']
     }
   }

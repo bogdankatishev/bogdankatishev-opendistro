@@ -4,7 +4,7 @@
 # @summary It installs the Open Distro for ElasticSearch package
 class opendistro::install (
   String                         $java_package                = $opendistro::java_package,
-  String                         $package_name                = $opendistro::package_name,  
+  String                         $package_name                = $opendistro::package_name,
 ) {
 
   case $opendistro::ensure {
