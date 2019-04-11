@@ -28,7 +28,7 @@ class opendistro::repo {
             descr    => 'Elastic repository for 6.x packages',
             baseurl  => $download_url_Elastic,
             gpgcheck => 1,
-            gpgkey   => 'https://d3g5vo6xdbdb9a.cloudfront.net/GPG-KEY-opendistroforelasticsearch',
+            gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
             enabled  => 1,
           }
         }
