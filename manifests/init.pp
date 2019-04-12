@@ -4,6 +4,7 @@ class opendistro (
   String                         $java_package,
   String                         $package_name,
   String                         $package_ensure                                      = 'installed',
+  String                         $service_name                                        = 'elasticsearch',
   Enum['present', 'absent'] $ensure                                                   = 'present',
   Boolean $manage_repo                                                                = true,
   Enum['enabled', 'running', 'disabled', 'unmanaged'] $service_ensure                 = 'enabled',

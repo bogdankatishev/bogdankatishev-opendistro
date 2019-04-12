@@ -4,8 +4,8 @@
 # @summary It manages the package repositories to install Open Distro for ElasticSearch
 class opendistro::repo {
 
-  $download_url_OpenDistro = 'https://d3g5vo6xdbdb9a.cloudfront.net/yum/noarch/'
-  $download_url_Elastic    = 'https://artifacts.elastic.co/packages/oss-6.x/yum'
+  $download_url_opendistro = 'https://d3g5vo6xdbdb9a.cloudfront.net/yum/noarch/'
+  $download_url_elastic    = 'https://artifacts.elastic.co/packages/oss-6.x/yum'
 
   if ($opendistro::manage_repo == true) and ($opendistro::ensure == 'present') {
     case $facts['osfamily'] {
@@ -15,7 +15,7 @@ class opendistro::repo {
           yumrepo{'opendistroforelasticsearch-artifacts-repo':
             ensure   => $opendistro::ensure,
             descr    => 'Release RPM artifacts of OpenDistroForElasticsearch',
-            baseurl  => $download_url_OpenDistro,
+            baseurl  => $download_url_opendistro,
             gpgcheck => 1,
             gpgkey   => 'https://d3g5vo6xdbdb9a.cloudfront.net/GPG-KEY-opendistroforelasticsearch',
             enabled  => 1,
@@ -26,7 +26,7 @@ class opendistro::repo {
           yumrepo{'elastic':
             ensure   => $opendistro::ensure,
             descr    => 'Elastic repository for 6.x packages',
-            baseurl  => $download_url_Elastic,
+            baseurl  => $download_url_elastic,
             gpgcheck => 1,
             gpgkey   => 'https://artifacts.elastic.co/GPG-KEY-elasticsearch',
             enabled  => 1,
@@ -43,7 +43,7 @@ class opendistro::repo {
         }
         if !defined (Zypprepo['opendistroforelasticsearch-artifacts-repo']) {
           zypprepo{'opendistroforelasticsearch-artifacts-repo':
-            baseurl     => $download_url_OpenDistro,
+            baseurl     => $download_url_opendistro,
             enabled     => 1,
             autorefresh => 1,
             name        => 'Release RPM artifacts of OpenDistroForElasticsearch',
@@ -60,7 +60,7 @@ class opendistro::repo {
         }
         if !defined (Zypprepo['elastic']) {
           zypprepo{'elastic':
-            baseurl     => $download_url_Elastic,
+            baseurl     => $download_url_elastic,
             enabled     => 1,
             autorefresh => 1,
             name        => 'Elastic repository for 6.x packages',

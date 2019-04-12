@@ -1,0 +1,3 @@
+---
+opendistro::java_package: 'java-1.8.0-openjdk-devel'
+opendistro::package_name: 'opendistroforelasticsearch'
