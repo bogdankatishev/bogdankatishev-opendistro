@@ -35,3 +35,8 @@ service\_ensure -> Defines the state of the service (default: enabled)
 - [x] Basic installation of ES and OpenDistro for ES
 - [x] Java installation
 - [x] Needed symlinks (for java 8)
+
+### OS support
+- [x] CentOS
+- [ ] Suse (not tested yet)
+- [ ] Debian
